@@ -1,0 +1,26 @@
+Comando para criar o arquivo de requirements.txt
+- pip freeze > requirements.txt
+
+Comando para recarregar o requirements nos projeitos
+- pip install -r requirements.txt
+
+Comando para uninstall requirements
+- pip uninstall -r caminho_pro_arquivo_requirements.txt
+
+Comando para criar um ambiente virtual no Python
+- python -m nome_do_ambiente venv
+- Ativando o ambiente:
+    - nome_do_ambiente/scripts/activate
+- Desativando o ambiente
+    - deactivate
+
+Comandos para inicializar a FastAPI
+
+- uvicorn main:app --reload
+
+Comando para fazer a chamada direto pela main.py
+    import uvicorn
+
+    uvicorn.run("main:app", host="0.0.0.0", port=8000,
+                log_level="info", reload=True)
+
