@@ -35,7 +35,7 @@ async def get_cursos(db: Any = Depends(fake_db)):
 @router.get('/cursos/{curso_id}', 
             description='Retorna cada curso pelo ID do curso', 
             summary='Retorna cada curso pelo ID')
-async def get_curso(curso_id: int = Path(title='ID do curso', description='Deve ser entre 1 e 2', gt=0, lt=3), db: Any = Depends(fake_db)):
+async def get_curso(curso_id: int = Path(title='ID do curso', description='Deve ser entre 1 e 2', gt=0, lt=3)):
     try:
         curso = cursos[curso_id]
         return curso
@@ -48,17 +48,18 @@ async def get_curso(curso_id: int = Path(title='ID do curso', description='Deve 
              description='Adiciona curso na lista de cursos', 
              summary='Adiciona cursos',
              response_model=Curso)
-async def post_curso(curso: Curso, db: Any = Depends(fake_db)):
+async def post_curso(curso: Curso):
     next_id: int = len(cursos) + 1
-    cursos[next_id] = curso
-    del curso.id
+    curso.id = next_id
+    cursos.append(curso)
+     
     return curso
 
 
 @router.put('/cursos/{curso_id}', 
             description='Atualiza cursos existente da lista de cursos', 
             summary='Atualiza cursos')
-async def put_curso(curso_id: int, curso: Curso, db: Any = Depends(fake_db)):
+async def put_curso(curso_id: int, curso: Curso):
     if curso_id in cursos:
         cursos[curso_id] = curso
         del curso.id
