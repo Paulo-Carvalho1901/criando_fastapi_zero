@@ -1,5 +1,5 @@
-from pydantic import BaseSettings
 from sqlalchemy.ext.declarative import declarative_base
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # CONFIGURAÇÕES GERAIS USADAS NA APLICAÇÃO
