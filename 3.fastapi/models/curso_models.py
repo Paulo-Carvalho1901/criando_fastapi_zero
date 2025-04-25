@@ -2,7 +2,7 @@ from core.configs import settings
 
 from sqlalchemy import Column, Integer, String
 
-
+# TABELA QUE SERÁ CRIADA NO BANCO DE DADOS
 class CursoModel(settings.DBBaseModel):
     __tablename__ = 'cursos'
 
