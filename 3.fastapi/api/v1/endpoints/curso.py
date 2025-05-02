@@ -27,6 +27,7 @@ async def post_curso(curso: CursoSchema, db: AsyncSession = Depends(get_session)
 
     db.add(novo_curso)
     await db.commit()
+    await db.refresh(novo_curso)
 
     return novo_curso
 
