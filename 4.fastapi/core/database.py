@@ -9,3 +9,12 @@ from core.configs import settings
 
 # CRIANDO ENGINE
 engine = AsyncEngine = create_async_engine(settings.DB_URL)
+
+
+session: AsyncSession = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    expire_on_commit=False,
+    class_=AsyncSession,
+    bind=engine
+)
