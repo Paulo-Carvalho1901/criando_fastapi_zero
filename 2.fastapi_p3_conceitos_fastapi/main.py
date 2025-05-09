@@ -1,5 +1,5 @@
 # IMPORTA FASTAPI
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 
 # Instanciando o Objeto
 app = FastAPI()
