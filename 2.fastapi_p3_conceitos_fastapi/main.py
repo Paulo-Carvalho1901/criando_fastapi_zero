@@ -1,6 +1,9 @@
 # IMPORTA FASTAPI
 from fastapi import FastAPI, HTTPException, status
 
+# IMPORTA MODEL
+from models import Curso
+
 # Instanciando o Objeto
 app = FastAPI()
 
@@ -43,7 +46,17 @@ async def get_curso(curso_id: int): # fazendo type hint informando o tipo de dad
     except KeyError:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Curso não encontrado.')
 
+"""
+POST CURSO - Adicionando um curso a lista de cursos
 
+"""
+
+@app.post('/cursos', status_code=status.HTTP_201_CREATED)
+async def post_curso(curso: Curso):
+    next_id: int = len(cursos) + 1
+    cursos[next_id] = curso
+    del curso.id
+    return curso
 
 if __name__ == '__main__':
     import uvicorn
