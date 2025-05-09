@@ -21,10 +21,9 @@ cursos = {
 """
 GET CURSOS 
 Busca todos os cursos existentes no seu python
-
 """
-@app.get('/cursos')
-async def get_cursos():
+@app.get('/cursos') # definindo o seu endpoint '/cursos'
+async def get_cursos(): 
     return cursos
 
 
