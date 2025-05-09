@@ -37,10 +37,11 @@ o valor específico fornecido na requisição será usado.
 """
 @app.get('/cursos/{curso_id}')
 async def get_curso(curso_id: int): # fazendo type hint informando o tipo de dado que iremos passar
-    curso = cursos[curso_id]
-    curso.update({"id": curso_id} )
-
-    return curso
+    try:
+        curso = cursos[curso_id]
+        return curso
+    except KeyError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Curso não encontrado.')
 
 
 
