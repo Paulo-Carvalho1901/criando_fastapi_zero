@@ -9,4 +9,5 @@ pip install uvicorn - uvicorn é um dos servidores para executar código assincr
 pip freeze > requirements.txt - utilizado para guarda nossas libs instaladas e suas versções utilizadas no código
 pip install -r requirements.txt - reinstalar o requirements.txt
 
-
+Rodando a plicação api
+uvicorn main:app --reload
