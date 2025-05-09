@@ -7,7 +7,7 @@ from models import Curso
 # Instanciando o Objeto
 app = FastAPI()
 
-# Didionários de cursos
+# Dicionários de cursos
 cursos = {
     1: {
         "titulo": "Programação para leigos",
