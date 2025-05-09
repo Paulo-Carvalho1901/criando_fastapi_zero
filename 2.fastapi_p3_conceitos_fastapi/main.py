@@ -11,12 +11,22 @@ cursos = {
         "aulas": 122,
         "horas": 58
     },
-    1: {
+    2: {
         "titulo": "Algoritmo e logica de programação",
         "aulas": 87,
         "horas": 67
     }
 }
+
+"""
+GET CURSOS 
+Busca todos os cursos existentes no seu python
+
+"""
+@app.get('/cursos')
+async def get_cursos():
+    return cursos
+
 
 if __name__ == '__main__':
     import uvicorn
