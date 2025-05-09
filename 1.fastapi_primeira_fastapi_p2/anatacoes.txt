@@ -1,0 +1,8 @@
+NOTAS IMPORTANTES PARA ESTUDOS
+
+PRIMEIROS PASSOS
+
+pip install fastapi
+
+pip install uvicorn - uvicorn é um dos servidores para executar código assincrono (alta performace)
+
