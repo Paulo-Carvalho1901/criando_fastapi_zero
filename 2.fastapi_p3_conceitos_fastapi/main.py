@@ -27,6 +27,23 @@ async def get_cursos():
     return cursos
 
 
+"""
+GET CURSO
+Busca apenas curso pelo curso_id
+
+/cursos/: É a parte fixa do caminho.
+{curso_id}: É um path parameter (parâmetro de caminho). Indica que, no lugar de curso_id, 
+o valor específico fornecido na requisição será usado.
+"""
+@app.get('/cursos/{curso_id}')
+async def get_curso(curso_id: int): # fazendo type hint informando o tipo de dado que iremos passar
+    curso = cursos[curso_id]
+    curso.update({"id": curso_id} )
+
+    return curso
+
+
+
 if __name__ == '__main__':
     import uvicorn
 
