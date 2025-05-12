@@ -1,0 +1,22 @@
+# FUNÇÃO ASYNC
+
+Em resumo, funções async permitem que seu código execute tarefas de forma não bloqueante. Isso é crucial para lidar com operações que podem levar tempo, como:
+
+Requisições de rede: Enviar e receber dados de APIs externas.
+Acesso a banco de dados: Consultar e modificar dados.
+Leitura/escrita de arquivos: Ler e salvar informações no disco.
+Como funciona?
+
+Quando uma função async é chamada, ela pode "suspender" sua execução em pontos onde uma operação demorada é necessária (por exemplo, esperando uma resposta de uma API). Enquanto a função está suspensa, o loop de eventos do FastAPI pode executar outras tarefas, como atender a outras requisições de usuários. Quando a operação suspensa é concluída, a função async retoma sua execução de onde parou.
+
+Vantagens:
+
+Desempenho: Permite que seu aplicativo lide com muitas requisições simultaneamente sem "travar".
+Escalabilidade: Facilita o aumento da capacidade do seu aplicativo para lidar com mais usuários e tráfego.
+Eficiência: Utiliza os recursos do servidor de forma mais eficiente, evitando que ele fique ocioso esperando por operações lentas.
+Exemplo:
+
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=CursoSchema)
+@router.post('/'): Este é um decorator que define a rota. Ele especifica que esta função responderá a requisições POST para a rota /. O router provavelmente é uma instância de APIRouter do FastAPI, que permite organizar suas rotas em módulos separados.
+status_code=status.HTTP_201_CREATED: Define o código de status HTTP que será retornado se a requisição for bem-sucedida. status.HTTP_201_CREATED representa o código 201 Created, indicando que um novo recurso foi criado com sucesso.
+response_model=CursoSchema: Especifica o modelo de dados (usando provavelmente Pydantic) que será usado para serializar a resposta. Isso significa que a resposta da API (os dados do curso criado) será formatada de acordo com a estrutura definida em CursoSchema.
