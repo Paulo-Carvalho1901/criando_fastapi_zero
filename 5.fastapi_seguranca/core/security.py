@@ -4,7 +4,7 @@ from passlib.context import CryptContext
 CRIPTO = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 
-def varificar_senha(senha: str, hash_senha: str) -> bool:
+def verificar_senha(senha: str, hash_senha: str) -> bool:
     """
     Função para verificar se a senha está correto, comparando
     a senha em texto puro, informado pelo usuário, e o hash da
