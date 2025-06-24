@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from pydantic import BaseModel
 
-from core.database import Sessioin
+from core.database import Session
 from core.auth import oauth2_schema
 from core.configs import settings
 from models.usuario_model import UsuarioModel
@@ -18,7 +18,7 @@ class TokenData(BaseModel):
 
 
 async def get_session() -> AsyncGenerator:
-    session: AsyncSession = Sessioin()
+    session: AsyncSession = Session()
 
     try:
         yield session
@@ -26,7 +26,7 @@ async def get_session() -> AsyncGenerator:
         await session.close()
 
 
-async def get_current_user(db: Sessioin = Depends(get_session), token: str = Depends(oauth2_schema)) -> UsuarioModel:
+async def get_current_user(db = Depends(get_session), token: str = Depends(oauth2_schema)) -> UsuarioModel:
     credential_exception: HTTPException = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail='Não foi possível autenticar a credencial.',

@@ -12,4 +12,3 @@ Session: AsyncSession = sessionmaker(
     class_=AsyncSession,
     bind=engine
 )
-
