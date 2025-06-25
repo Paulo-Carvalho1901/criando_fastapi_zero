@@ -19,11 +19,15 @@ async def post_artigo(
     artigo: ArtigoShema, 
     usuario_logado: UsuarioModel = Depends(get_current_user), 
     db: AsyncSession = Depends(get_session)):
+
+    url_fonte_str = str(artigo.url_fonte)
+
     novo_artigo: ArtigoModel = ArtigoModel(
         titulo=artigo.titulo, 
         descricao=artigo.descricao,
-        url_fonte=artigo.url_fonte,
+        url_fonte=url_fonte_str,
         usuario_id=usuario_logado.id)
+    
     db.add(novo_artigo)
     await db.commit()
 

@@ -92,7 +92,7 @@ async def put_usuario(usuario_id: int, usuario: UsuarioSchemaUp, db: AsyncSessio
             if usuario.eh_admin:
                 usuario_up.eh_admin = usuario.eh_admin
             if usuario.senha:
-                usuario_up.eh_admin = gerar_hash_senha(usuario.senha)
+                usuario_up.senha = gerar_hash_senha(usuario.senha)
 
             await session.commit()
 
